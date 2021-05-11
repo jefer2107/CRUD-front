@@ -14,9 +14,15 @@ export default function ListUser(){
         }) 
     },[])
 
-    const onCancel = (id)=>{
-        axios.delete(`http://localhost:4000/users/${id}`,id)
+    const onDelete = (id)=>{
+        axios.delete(`http://localhost:4000/users/${id}`)
             .then((x)=>{
+                // setUser((state)=>{
+                //     const verifyItem = user.findIndex(e=>e._id === id)
+                //     const newList = [...state]
+                //     newList.splice(verifyItem, 1)
+                //     return newList
+                // })
                 console.log(x.data)
             })
     }
@@ -41,8 +47,8 @@ export default function ListUser(){
                                 <td> {x.nome} </td>
                                 <td> {x.email} </td>
                                 <td>
-                                    <button type="button" onCancel={()=>onCancel(x._id)}  className="btn btn-primary btn-xs btn-block">Editar</button>
-                                    <button className="btn btn-danger btn-xs btn-block">Cancelar</button>
+                                    <button type="button" onCancel={()=>onDelete(x._id)}  className="btn btn-primary btn-xs btn-block">Editar</button>
+                                    <button className="btn btn-danger btn-xs btn-block">Remover</button>
                                 </td>
                             </tr>
                         )
