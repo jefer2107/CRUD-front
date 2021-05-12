@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import "./editUser.css"
 
@@ -14,15 +14,20 @@ export default function EditUser(){
         })
     }
 
-    axios.get(`http://localhost:4000/users/${id}`)
+    useEffect(()=>{
+        axios.get(`http://localhost:4000/users/${id}`)
         .then((x)=>{
             setModel(x.data)
         })
+    },[id])
+
+    
 
     // const onSave = ()=>{
-    //     axios.put(`http://localhost:4000/users/${id}`)
-    //         .then(()=>{
+    //     axios.put(`http://localhost:4000/users/${id}`,model)
+    //         .then((x)=>{
     //             history.push(`/edit-user/${id}`)
+    //             setModel(x.data)
 
     //         })
     // }
