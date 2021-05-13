@@ -18,30 +18,29 @@ export default function EditUser(){
         axios.get(`http://localhost:4000/users/${id}`)
         .then((x)=>{
             setModel(x.data)
+            console.log(id)
         })
-    },[id])
+    },[])
 
-    
-
-    // const onSave = ()=>{
-    //     axios.put(`http://localhost:4000/users/${id}`,model)
-    //         .then((x)=>{
-    //             history.push(`/edit-user/${id}`)
-    //             setModel(x.data)
-
-    //         })
-    // }
+    const onSave = ()=>{
+        axios.put(`http://localhost:4000/users/${id}`,model)
+            .then((x)=>{
+                setModel(x.data)
+                history.push("/user-list")
+                
+            })
+    }
 
     return(
         <div className="edit-user d-flex">
-            <form className="mx-auto">
+            <form onSubmit={onSave} className="mx-auto">
                 <div className="form-group">
                     <label>Nome:</label>
-                    <input onChange={changeModel} className="form-control my-1" name="nome" type="text" value={model.nome} />
+                    <input onChange={changeModel} className="form-control my-1" name="nome" type="text" value={model.nome}  />
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input onChange={changeModel} className="form-control my-1" name="email" type="email" value={model.email} />
+                    <input onChange={changeModel} className="form-control my-1" name="email" type="email" value={model.email}  />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block my-2">Salvar</button>
             </form>

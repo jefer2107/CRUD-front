@@ -47,7 +47,7 @@ export default function ListUser(){
                 <tbody className="text-center">
                     {user.map((x)=>{
                         return(
-                            <tr>
+                            <tr key={x._id}>
                                 <td> {x._id} </td>
                                 <td> {x.nome} </td>
                                 <td> {x.email} </td>

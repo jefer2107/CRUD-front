@@ -16,7 +16,7 @@ export default function Routes(){
                 <Route exact path="/" component={Home} />
                 <Route exact path="/register-user" component={RegisterUser} />
                 <Route exact path="/user-list" component={ListUser} />
-                <Route exact path="/edit-user" component={EditUser} />
+                <Route exact path="/edit-user/:id" component={EditUser} />
             </Switch>
         </BrowserRouter>
     )
